@@ -22,6 +22,20 @@ mongoose.connection.once('open', () => {
     console.log('connected to mongeese');
 });
 
+
+///////////////////////////
+///  Controller Config  ///
+///////////////////////////
+const plantsController = require('./controllers/plants')
+
+
+///////////////////////////
+////    Middleware     ////
+///////////////////////////
+APP.use(express.json())
+APP.use('/plants', plantsController)
+
+
 ///////////////////////////
 ////       Routes      ////
 ///////////////////////////
