@@ -18,6 +18,10 @@ PLANTS.get('/', (req, res) => {
     });
 });
 
+
+/* to test the create route, or to create something in your local database
+curl -X POST -H "Content-Type: application/json" -d '{"commonName":"monstera", "scientificName":"monstera spruceana", "image":"https://bs.plantnet.org/image/o/0a3b168b7eb637d717e4f6a48e9e90a91c5f67c4"}' http://localhost:3003/plants
+*/
 PLANTS.post('/', (req, res) => {
     Plant.create(req.body, (err, createdPlant) => {
         if (err) {
