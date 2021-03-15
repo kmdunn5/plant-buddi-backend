@@ -31,6 +31,9 @@ PLANTS.post('/', (req, res) => {
     });
 });
 
+/* test the update route, replace <:ID> with the ID of a created plant
+curl -X PUT -H "Content-Type: application/json" -d '{"nickName":"Monty"}' http://localhost:3003/plants/<:ID>
+*/
 PLANTS.put('/:id', (req, res) => {
     Plant.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlant) => {
         if (err) {
@@ -40,6 +43,9 @@ PLANTS.put('/:id', (req, res) => {
     })
 })
 
+/* test the delete route, replace <:ID> with the ID of a created plant
+curl -X DELETE http://localhost:3003/plants/<:ID>
+*/
 PLANTS.delete('/:id', (req, res) => {
     Plant.findByIdAndRemove(req.params.id, (err, deletedPlant) => {
         if (err) {

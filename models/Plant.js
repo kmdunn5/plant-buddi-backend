@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const plantSchema = mongoose.Schema({
     commonName: {type: String, required: true},
+    nickName: String,
     scientificName: {type: String, required: true},
     image: {type: String, required: true},
     lastWatered: {type: String, required: true, default: 'Not Watered Yet'},
