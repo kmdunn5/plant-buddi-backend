@@ -3,7 +3,7 @@
 ///////////////////////////
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 
 
 ///////////////////////////
@@ -26,14 +26,31 @@ mongoose.connection.once('open', () => {
 ///////////////////////////
 ///  Controller Config  ///
 ///////////////////////////
-const plantsController = require('./controllers/plants')
+const plantsController = require('./controllers/plants');
+
+
+///////////////////////////
+//  Cors Port Allowance  //
+///////////////////////////
+const whitelist = ['http://localhost:3000']
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('not allowed'))
+        }
+    }
+}
+
+APP.use(cors(corsOptions))
 
 
 ///////////////////////////
 ////    Middleware     ////
 ///////////////////////////
-APP.use(express.json())
-APP.use('/plants', plantsController)
+APP.use(express.json());
+APP.use('/plants', plantsController);
 
 
 ///////////////////////////
