@@ -10,3 +10,5 @@ const plantSchema = mongoose.Schema({
     lightingRequirements: {type: String, default:''},
     notes: {type: String, default: ''}
 });
+
+module.exports = mongoose.model('Plant', plantSchema)
