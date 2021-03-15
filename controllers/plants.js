@@ -31,4 +31,22 @@ PLANTS.post('/', (req, res) => {
     });
 });
 
+PLANTS.put('/:id', (req, res) => {
+    Plant.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedPlant) => {
+        if (err) {
+            res.status(400).json({ error: err.message});
+        }
+        res.status(200).json(updatedPlant);
+    })
+})
+
+PLANTS.delete('/:id', (req, res) => {
+    Plant.findByIdAndRemove(req.params.id, (err, deletedPlant) => {
+        if (err) {
+            res.status(400).json({ error: err.message});
+        }
+        res.status(200).json(deletedPlant);
+    })
+})
+
 module.exports = PLANTS;
