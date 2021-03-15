@@ -3,7 +3,7 @@
 ///////////////////////////
 const express = require('express');
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 
 
 ///////////////////////////
@@ -32,18 +32,18 @@ const plantsController = require('./controllers/plants');
 ///////////////////////////
 //  Cors Port Allowance  //
 ///////////////////////////
-// const whitelist = ['http://localhost:3000']
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (whitelist.indexOf(origin) !== -1) {
-//             callback(null, true)
-//         } else {
-//             callback(new Error('not allowed'))
-//         }
-//     }
-// }
+const whitelist = ['http://localhost:3000']
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('not allowed'))
+        }
+    }
+}
 
-// APP.use(cors(corsOptions))
+APP.use(cors(corsOptions))
 
 
 ///////////////////////////
