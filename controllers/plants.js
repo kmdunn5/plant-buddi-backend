@@ -3,6 +3,7 @@
 ///////////////////////////
 const express = require('express');
 const PLANTS = express.Router();
+const fetch = require('node-fetch')
 const Plant = require('../models/Plant')
 
 
@@ -16,6 +17,12 @@ PLANTS.get('/', (req, res) => {
         }
         res.status(200).json(foundPlants);
     });
+});
+
+PLANTS.get('/search/:id', async (req, res) => {
+        const response = await fetch('https://trefle.io/api/v1/plants/search?token=h3BUvEszyxEYn8KbbVH31pgzKkRprttDHEkW177_73A&q=' + req.params.id);
+        const json = await response.json();
+        res.status(200).json(json);
 });
 
 
