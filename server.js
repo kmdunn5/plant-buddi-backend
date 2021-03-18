@@ -43,13 +43,6 @@ const whitelist = ['http://localhost:3000', 'https://plant-buddi.herokuapp.com']
 //         }
 //     }
 // }
-let allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Headers', "*");
-    next();
-  }
-
-app.use(allowCrossDomain);
 
 APP.use(cors())
 
