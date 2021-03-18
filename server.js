@@ -10,14 +10,15 @@ const cors = require('cors');
 ////     Constants     ////
 ///////////////////////////
 const APP = express();
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 const DBNAME = 'plants';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + DBNAME
 
 
 ///////////////////////////
 //  Mongoose Connection  //
 ///////////////////////////
-mongoose.connect(`mongodb://localhost:27017/${DBNAME}`, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
     console.log('connected to mongeese');
 });
