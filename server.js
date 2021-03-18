@@ -43,7 +43,7 @@ const plantsController = require('./controllers/plants');
 //         }
 //     }
 // }
-APP.options('*', cors()) // include before other routes
+// APP.options('*', cors()) // include before other routes
 
 APP.use(cors())
 
