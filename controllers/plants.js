@@ -19,11 +19,22 @@ PLANTS.get('/', (req, res) => {
     });
 });
 
+// Search 3rd party API for data
 PLANTS.get('/search/:id', async (req, res) => {
         const response = await fetch('https://trefle.io/api/v1/plants/search?token=h3BUvEszyxEYn8KbbVH31pgzKkRprttDHEkW177_73A&q=' + req.params.id);
         const json = await response.json();
         res.status(200).json(json);
 });
+
+// Show for one Plant
+PLANTS.get('/:id', (req, res) => {
+    Plant.findById(req.params.id, (err, foundPlant) => {
+        if (err) {
+            res.status(400).json({ error: err.message});
+        }
+        res.status(200).json(foundPlant);
+    })
+})
 
 
 /* to test the create route, or to create something in your local database
