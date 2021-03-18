@@ -50,6 +50,7 @@ APP.use(cors())
 ///////////////////////////
 ////    Middleware     ////
 ///////////////////////////
+APP.use(express.urlencoded({extended: true}));
 APP.use(express.json());
 APP.use('/plants', plantsController);
 
