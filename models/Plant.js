@@ -5,7 +5,7 @@ const plantSchema = mongoose.Schema({
     nickName: String,
     scientificName: {type: String, required: true},
     image: {type: String, required: true},
-    lastWatered: {type: String, required: true, default: 'Not Watered Yet'},
+    lastWatered: {type: String, default: ''},
     howOftenToWater: {type: String, default:''},
     lastFertilized: {type: String, default:''},
     lightingRequirements: {type: String, default:''},
