@@ -33,19 +33,18 @@ const plantsController = require('./controllers/plants');
 ///////////////////////////
 //  Cors Port Allowance  //
 ///////////////////////////
-// const whitelist = ['http://localhost:3000', 'https://plant-buddi.herokuapp.com', 'https://plant-buddi-backend.herokuapp.com', 'https://herokuapp.com']
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (whitelist.indexOf(origin) !== -1) {
-//             callback(null, true)
-//         } else {
-//             callback(new Error('not allowed'))
-//         }
-//     }
-// }
-// APP.options('*', cors()) // include before other routes
+const whitelist = ['http://localhost:3000', 'https://plant-buddi.herokuapp.com']
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('not allowed'))
+        }
+    }
+}
 
-APP.use(cors())
+APP.use(cors(corsOptions))
 
 
 ///////////////////////////
